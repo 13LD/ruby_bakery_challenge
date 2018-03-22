@@ -34,7 +34,7 @@ def bakery_solution
       print "\n#{ product.code }: "
       packet_count = STDIN.gets
       order = Order.parse( product, packet_count )
-      factory.order_factory( order )
+      bakery.order_factory( order )
     rescue ArgumentError => e
       puts "Order failed: #{ e.message }"
       puts "Try again for #{product.code}"
