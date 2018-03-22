@@ -15,5 +15,5 @@ class Product
   private
 
   #TODO: add method to check packet price type
-  
+
 end
