@@ -15,6 +15,7 @@ class Factory
     order.render
   end
 
+
   def render
     puts "\nMENU"
     products.each do |product|
