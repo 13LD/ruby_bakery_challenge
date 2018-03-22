@@ -16,7 +16,18 @@ class Order
     raise ArgumentError, "Invalid input - #{input}"
   end
 
+  def optimal_distribution
+    @min_packets_needed, @cost, @packet_distribution = ItemCounter.new(self).get_solution
+  end
 
-  #TODO: optimal_distribution method, add packet_distribution
-  #TODO: render order details (package lists)
+  def render
+    if (min_packets_needed > number_of_products) or cost <= 0
+      return puts "Distribution not found"
+    end
+    puts "#{number_of_products} #{product.code}\t$#{cost.round(2)}"
+    packet_distribution.each do |packet_size, packet_count|
+      puts  "#{packet_count} X #{packet_size}   $#{ product.pricing_packet[ packet_size ] }"
+    end
+  end
+
 end

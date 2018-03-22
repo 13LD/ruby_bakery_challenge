@@ -16,6 +16,8 @@ class ItemCounter
   end
 
 
+  private
+
   def optimal_packets_needed
     available_packet_sizes = order.product.pricing_packet.keys
     solution_map = Array.new
