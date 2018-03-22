@@ -1,6 +1,7 @@
 class Order
+  require_relative 'item_counter'
   attr_reader :product, :number_of_products
-  attr_accessor :min_packets_needed, :cost
+  attr_accessor :min_packets_needed, :cost, :packet_distribution
 
   def initialize(product, number_of_products)
     raise(ArgumentError, 'Invalid type for product') unless product.is_a?(Product)
@@ -14,6 +15,7 @@ class Order
   rescue ArgumentError
     raise ArgumentError, "Invalid input - #{input}"
   end
+
 
   #TODO: optimal_distribution method, add packet_distribution
   #TODO: render order details (package lists)
