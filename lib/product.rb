@@ -8,12 +8,11 @@ class Product
   end
 
   def add_pricing_packet(packet_size, price)
-    raise(ArgumentError, 'Invalid pricing packet') unless packet_size.is_a?(Integer)
+    raise(ArgumentError, 'Invalid pricing packet') unless packet_size.is_a?(Integer) and (price.is_a?(Float) or price.is_a?(Integer))
+    raise(ArgumentError, 'Duplicate') if @pricing_packet.key?(packet_size)
     @pricing_packet[ packet_size ] = price
   end
 
   private
-
-  #TODO: add method to check packet price type
 
 end

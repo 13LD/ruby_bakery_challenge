@@ -7,11 +7,11 @@ describe Order do
 
   describe "#initialize" do
     it "raises exception for invalid type of product" do
-      expect{ Order.new("product", 43) }.to raise_exception(Order::ArgumentError).with_message('Invalid type for product')
+      expect{ Order.new("product", 43) }.to raise_exception().with_message('Invalid type for product')
     end
 
     it "raises exception for invalid type for number_of_products" do
-      expect{ Order.new(product, 21.132) }.to raise_exception(Order::ArgumentError).with_message('Invalid type for packet count')
+      expect{ Order.new(product, 21.132) }.to raise_exception().with_message('Invalid type for packet count')
     end
 
     it "initializes order with given product and number_of_products" do
@@ -34,8 +34,8 @@ describe Order do
     end
 
     it "raises exception for invalid user input for order details" do
-      expect{ Order.parse(product, "qwerty") }.to raise_exception(ArgumentError).with_message("Invalid input - qwerty")
-      expect{ Order.parse(product, "qwerty10") }.to raise_exception(ArgumentError).with_message("Invalid input - qwerty10")
+      expect{ Order.parse(product, "qwerty") }.to raise_exception().with_message("Invalid input - qwerty")
+      expect{ Order.parse(product, "qwerty10") }.to raise_exception().with_message("Invalid input - qwerty10")
     end
   end
 

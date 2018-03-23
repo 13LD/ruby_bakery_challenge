@@ -17,9 +17,20 @@ describe Product do
       expect( product.pricing_packet ).to include(10 => 2.5)
     end
 
-    it "raises exception for invalid type of packet_size for pricing" do
+    it "raises exception for invalid type of packet_size for pricing packets" do
       expect { product.add_pricing_packet(10.5, 14) }
-          .to raise_exception(Product::ArgumentError).with_message('Invalid pricing packet')
+          .to raise_exception().with_message('Invalid pricing packet')
+    end
+
+    it "raises exception for invalid type of price for pricing packets" do
+      expect { product.add_pricing_packet(2, "2") }
+          .to raise_exception().with_message('Invalid pricing packet')
+    end
+
+    it "raises exception for duplicate pricing packets" do
+      product.add_pricing_packet(2, 1.6)
+      expect{ product.add_pricing_packet(2, 1.5) }.to raise_exception()
+                                                   .with_message('Duplicate')
     end
 
   end
